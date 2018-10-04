@@ -58,5 +58,10 @@ namespace Senior_Project_V1
       
             this.Frame.Navigate(typeof(MainPage));
         }
+
+        private void calendarApp_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
