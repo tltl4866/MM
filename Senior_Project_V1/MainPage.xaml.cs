@@ -294,6 +294,9 @@ namespace Senior_Project_V1
             Application.Current.Exit();
         }
 
-     
+        private void ToWelcomePageTest_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(WelcomePage));
+        }
     }
 }
