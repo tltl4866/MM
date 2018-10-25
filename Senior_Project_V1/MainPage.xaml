@@ -74,6 +74,8 @@
                    Text="Press the + icon to add a whitelisted user and get started! When you're ready, hit the doorbell icon to try and unlock the door with your face!" 
                    VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="33.333" Margin="50,80,50,0" 
                    TextAlignment="Center"/>
+        <Button x:Name="ToWelcomePageTest" Grid.Row="1" Grid.Column="1" Margin="200, 250, 0, 0" Click="ToWelcomePageTest_Click">To Welcome</Button>
+        
     </Grid>
     <Page.BottomAppBar>
         <CommandBar IsOpen="True" IsSticky="True" IsEnabled="True" Foreground="#FF7C3C3C">
