@@ -21,23 +21,33 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <MediaElement x:Name="speechMediaElement" HorizontalAlignment="Left" VerticalAlignment="Top" Loaded="speechMediaElement_Loaded"/>
+        <MediaElement x:Name="speechMediaElement" HorizontalAlignment="Left" 
+                       VerticalAlignment="Top" Loaded="speechMediaElement_Loaded"/>
         <Grid x:Name="DisabledFeedGrid" Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Rectangle Margin="10" Stroke="White" StrokeThickness="4" Grid.RowSpan="2"/>
-            <Image x:Name="image" HorizontalAlignment="Center" VerticalAlignment="Center" Source="Assets/CameraIcon.png" Margin="50"/>
-            <TextBlock x:Name="DisabledText" TextWrapping="Wrap" Text="The live camera feed has been disabled because of hardware constraints." HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" FontSize="33.333" TextAlignment="Center" Margin="10,0"/>
+            <Image x:Name="image" HorizontalAlignment="Center" 
+                   VerticalAlignment="Center" Source="Assets/CameraIcon.png" Margin="50"/>
+            <TextBlock x:Name="DisabledText" TextWrapping="Wrap" 
+                       Text="The live camera feed has been disabled because of hardware constraints." 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" FontSize="33.333" 
+                       TextAlignment="Center" Margin="10,0"/>
         </Grid>
-        <StackPanel x:Name="LiveFeedPanel" Margin="0, 10" Grid.Row="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <StackPanel x:Name="LiveFeedPanel" Margin="0, 10" Grid.Row="0" Grid.Column="1" 
+                    VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             <CaptureElement x:Name='WebcamFeed' Loaded="WebcamFeed_Loaded"/>
         </StackPanel>
         <StackPanel x:Name="AnalysingVisitorGrid" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,30,0" Visibility="Collapsed">
-            <ProgressRing IsActive="True" Width="113" Height="80" Foreground="White" VerticalAlignment="Center" Margin="0,0,0,10"/>
-            <TextBlock VerticalAlignment="Center" FontSize="26.667" Grid.Row="1" Text="Analyzing visitor..." TextWrapping="WrapWholeWords" TextAlignment="Center"/>
-            <TextBlock VerticalAlignment="Center" FontSize="21.333" Grid.Row="1" Text="This may take some time depending on your hardware." TextWrapping="WrapWholeWords" TextAlignment="Center" FontStyle="Italic"/>
+            <ProgressRing IsActive="True" Width="113" Height="80" Foreground="White" 
+                          VerticalAlignment="Center" Margin="0,0,0,10"/>
+            <TextBlock VerticalAlignment="Center" FontSize="26.667" Grid.Row="1" Text="Analyzing visitor..." 
+                       TextWrapping="WrapWholeWords" TextAlignment="Center"/>
+            <TextBlock VerticalAlignment="Center" FontSize="21.333" Grid.Row="1" 
+                       Text="This may take some time depending on your hardware." 
+                       TextWrapping="WrapWholeWords" TextAlignment="Center" FontStyle="Italic"/>
 
         </StackPanel>
 
@@ -57,8 +67,13 @@
             </GridView>
             <ProgressRing x:Name="OxfordLoadingRing" Grid.Column="0" IsActive="True" Width="113" Height="80" Grid.RowSpan="2" Foreground="White"/>
         </Grid>
-        <TextBlock x:Name="WelcomeBlock" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="Welcome to the Magic Mirror!" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="53.333" Margin="50,0,50,100"/>
-        <TextBlock x:Name="DetailsBlock" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="Press the + icon to add a whitelisted user and get started! When you're ready, hit the doorbell icon to try and unlock the door with your face!" VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="33.333" Margin="50,80,50,0" TextAlignment="Center"/>
+        <TextBlock x:Name="WelcomeBlock" HorizontalAlignment="Center" Grid.Row="1" 
+                   TextWrapping="Wrap" Text="Welcome to the Magic Mirror!" 
+                   VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="53.333" Margin="50,0,50,100"/>
+        <TextBlock x:Name="DetailsBlock" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" 
+                   Text="Press the + icon to add a whitelisted user and get started! When you're ready, hit the doorbell icon to try and unlock the door with your face!" 
+                   VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="33.333" Margin="50,80,50,0" 
+                   TextAlignment="Center"/>
     </Grid>
     <Page.BottomAppBar>
         <CommandBar IsOpen="True" IsSticky="True" IsEnabled="True" Foreground="#FF7C3C3C">

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Identity.Client;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -14,6 +15,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Threading.Tasks;
 
 namespace Senior_Project_V1
 {
@@ -22,6 +24,14 @@ namespace Senior_Project_V1
     /// </summary>
     sealed partial class App : Application
     {
+        //the following is required to use a Microsoft API
+        //Below is the clientId of your app registration. 
+        //You have to replace the below with the Application Id for your app registration
+        private static string ClientId = "1830348c-09f6-4e10-8014-33a93f3946ac";
+
+        public static PublicClientApplication PublicClientApp = new PublicClientApplication(ClientId);
+
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().

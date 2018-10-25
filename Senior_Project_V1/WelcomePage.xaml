@@ -14,10 +14,10 @@
             <TextBlock Margin="20,20,0,0" Name="Greetings"/>
             <Button Content="Weather" Name="weatherapp" Click="weatherapp_Click" Margin="20,20,0,0"/>
             <Button Content="Music" Name="musicapp" Click="musicapp_Click" Margin="20,20,0,0"/>
+            <Button Content="Calendar" Name="calendarapp" Click="calendarapp_Click" Margin="20,20,0,0"/>
             <Button Content="Back" Name="backbutton" Click="backbutton_Click" Margin="20,20,0,0"/>
+            
         </StackPanel>
-      
-        
-        
+
     </Grid>
 </Page>
