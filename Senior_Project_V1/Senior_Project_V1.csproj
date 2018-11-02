@@ -98,6 +98,8 @@
     <Compile Include="CalendarApp.xaml.cs">
       <DependentUpon>CalendarApp.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Calendar\CalendarAPI.cs" />
+    <Compile Include="Calendar\CalendarClass.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Facial Recognition\FaceApiRecognizer.cs" />
     <Compile Include="Facial Recognition\FaceApiUtils.cs" />
