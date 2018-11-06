@@ -38,21 +38,21 @@ namespace Senior_Project_V1
                 var position = await LocationManager.GetPosition(); //Need. Don't change.    
                 double lat = position.Coordinate.Latitude;
                 double lon = position.Coordinate.Longitude;
-                
-                //RootObject myWeather = await WeatherClass.GetWeather(position.Coordinate.Latitude, position.Coordinate.Longitude);
 
-                //string icon = String.Format("http:{0}", myWeather.current.condition.icon);
-                //ResultImage.Source = new BitmapImage(new Uri(icon, UriKind.Absolute));
+                RootObject myWeather = await WeatherClass.GetWeather(position.Coordinate.Latitude, position.Coordinate.Longitude);
 
-                //CurrentLocation.Text = myWeather.location.name;
-                //CurrentCondition.Text = myWeather.current.condition.text;
-                //CurrentTemp.Text = myWeather.current.temp_f.ToString() + "ø";
-                //Humidity.Text = myWeather.current.humidity.ToString() + "%";
-                //FeelsLike.Text = myWeather.current.feelslike_f.ToString() + "ø";
-                //maxtemp.Text = myWeather.forecast.forecastday[0].day.maxtemp_f.ToString() + "F";
-                //mintemp.Text = myWeather.forecast.forecastday[0].day.mintemp_f.ToString() + "F";
-                //sunrise.Text = myWeather.forecast.forecastday[0].astro.sunrise;
-                //sunset.Text = myWeather.forecast.forecastday[0].astro.sunset;
+                string icon = String.Format("http:{0}", myWeather.current.condition.icon);
+                ResultImage.Source = new BitmapImage(new Uri(icon, UriKind.Absolute));
+
+                CurrentLocation.Text = myWeather.location.name;
+                CurrentCondition.Text = myWeather.current.condition.text;
+                CurrentTemp.Text = myWeather.current.temp_f.ToString() + "ø";
+                Humidity.Text = myWeather.current.humidity.ToString() + "%";
+                FeelsLike.Text = myWeather.current.feelslike_f.ToString() + "ø";
+                maxtemp.Text = myWeather.forecast.forecastday[0].day.maxtemp_f.ToString() + "F";
+                mintemp.Text = myWeather.forecast.forecastday[0].day.mintemp_f.ToString() + "F";
+                sunrise.Text = myWeather.forecast.forecastday[0].astro.sunrise;
+                sunset.Text = myWeather.forecast.forecastday[0].astro.sunset;
             }
             catch
             {

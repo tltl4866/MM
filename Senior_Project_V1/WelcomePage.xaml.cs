@@ -18,9 +18,6 @@ using Senior_Project_V1.Helpers;
 
 namespace Senior_Project_V1
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class WelcomePage : Page
     {
         private WebcamHelper webcam;
@@ -40,7 +37,7 @@ namespace Senior_Project_V1
         private void WelcomePage_Loaded(object sender, RoutedEventArgs e)
         {
             var welcometext = String.Format("Welcome, {0}!", visitorName);
-            //Greetings.Text = welcometext;
+            Greetings.Text = welcometext;
         }
 
         private void weatherapp_Click(object sender, RoutedEventArgs e)
@@ -53,15 +50,15 @@ namespace Senior_Project_V1
             this.Frame.Navigate(typeof(MusicApp));
         }
 
-        private void backbutton_Click(object sender, RoutedEventArgs e)
-        {
-
-            this.Frame.Navigate(typeof(MainPage));
-        }
-
-        private void calendarApp_Click(object sender, RoutedEventArgs e)
+        //create frame navigation for calendar app
+        private void calendarapp_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(CalendarApp));
+        }
+
+        private void backbutton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(MainPage));
         }
     }
 }

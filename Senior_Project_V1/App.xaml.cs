@@ -29,7 +29,6 @@ namespace Senior_Project_V1
         //You have to replace the below with the Application Id for your app registration
         private static string ClientId = "1830348c-09f6-4e10-8014-33a93f3946ac";
 
-        //class to be used to acquire tokens in desktop or mobile applcations using provided API Key as client ID
         public static PublicClientApplication PublicClientApp = new PublicClientApplication(ClientId);
 
 

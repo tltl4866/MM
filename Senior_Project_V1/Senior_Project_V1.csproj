@@ -98,10 +98,6 @@
     <Compile Include="CalendarApp.xaml.cs">
       <DependentUpon>CalendarApp.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CalendarFolder\CalendarAPI.cs" />
-    <Compile Include="CalendarMonths.xaml.cs">
-      <DependentUpon>CalendarMonths.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Constants.cs" />
     <Compile Include="Facial Recognition\FaceApiRecognizer.cs" />
     <Compile Include="Facial Recognition\FaceApiUtils.cs" />
@@ -180,10 +176,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="CalendarApp.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CalendarMonths.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
