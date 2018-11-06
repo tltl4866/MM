@@ -67,6 +67,7 @@
             </GridView>
             <ProgressRing x:Name="OxfordLoadingRing" Grid.Column="0" IsActive="True" Width="113" Height="80" Grid.RowSpan="2" Foreground="White"/>
         </Grid>
+        
         <TextBlock x:Name="WelcomeBlock" HorizontalAlignment="Center" Grid.Row="1" 
                    TextWrapping="Wrap" Text="Welcome to the Magic Mirror!" 
                    VerticalAlignment="Center" Grid.ColumnSpan="3" FontSize="53.333" Margin="50,0,50,100"/>
@@ -77,6 +78,7 @@
         <Button x:Name="ToWelcomePageTest" Grid.Row="1" Grid.Column="1" Margin="200, 250, 0, 0" Click="ToWelcomePageTest_Click">To Welcome</Button>
         
     </Grid>
+    
     <Page.BottomAppBar>
         <CommandBar IsOpen="True" IsSticky="True" IsEnabled="True" Foreground="#FF7C3C3C">
             <AppBarButton x:Name="NewUserButton" Label="Add User" Icon="Add" Foreground="#FFFFFFFF" Width="64" Click="NewUserButton_Click"/>
