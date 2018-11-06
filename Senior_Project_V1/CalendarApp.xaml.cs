@@ -131,13 +131,6 @@ namespace Senior_Project_V1
         /// <param name="dayStr">string day of the week</param>
         private void createCalendar(int dayInt = -1, string dayStr = "")
         {
-            //get previous month's last day
-            cal.AddMonths(-1);
-            string lastDayofPrevMonth = cal.LastDayInThisMonth.ToString();
-            cal.AddMonths(1);
-
-            string lastDayofThisMonth = cal.LastDayInThisMonth.ToString();
-
             string month = "";
             if (setMonth == "")
             {
@@ -145,8 +138,34 @@ namespace Senior_Project_V1
             }
             else
             {
+                Dictionary<string, int> daysDict = new Dictionary<string, int>()
+                {
+                    {"January",     1},
+                    {"February",    2},
+                    {"March",       3},
+                    {"April",       4},
+                    {"May",         5},
+                    {"June",        6},
+                    {"July",        7},
+                    {"August",      8},
+                    {"September",   9},
+                    {"October",     10},
+                    {"November",    11},
+                    {"December",    12},
+                };
+                
+                cal.Month = daysDict[setMonth];
                 month = setMonth;
             }
+
+            //get previous month's last day
+            cal.AddMonths(-1);
+            string lastDayofPrevMonth = cal.LastDayInThisMonth.ToString();
+            cal.AddMonths(1);
+
+            string lastDayofThisMonth = cal.LastDayInThisMonth.ToString();
+
+            JanMonth.Text = cal.Month.ToString();
 
             //TestPrintOut.Text = cal.DayOfWeekAsString(7).ToString();
 
@@ -172,8 +191,6 @@ namespace Senior_Project_V1
             {
                 strDay = dayStr;
             }
-
-            //JanMonth.Text = cal.FirstDayInThisMonth.ToString();
 
             //get index for first of the month
             int tmp = 0;
@@ -350,13 +367,13 @@ namespace Senior_Project_V1
         {
             Dictionary<string, int> daysDict = new Dictionary<string, int>()
             {
-                {"Sunday", 0},
-                {"Monday", 1},
-                {"Tuesday", 2},
-                {"Wednesday", 3},
-                {"Thursday", 4},
-                {"Friday", 5},
-                {"Saturday", 6},
+                {"Sunday",      0},
+                {"Monday",      1},
+                {"Tuesday",     2},
+                {"Wednesday",   3},
+                {"Thursday",    4},
+                {"Friday",      5},
+                {"Saturday",    6},
             };
 
             int temp = (numDays - curDay) % 7;
@@ -383,13 +400,13 @@ namespace Senior_Project_V1
         {
             Dictionary<string, int> daysDict = new Dictionary<string, int>()
             {
-                {"Sunday", 0},
-                {"Monday", 1},
-                {"Tuesday", 2},
-                {"Wednesday", 3},
-                {"Thursday", 4},
-                {"Friday", 5},
-                {"Saturday", 6},
+                {"Sunday",      0},
+                {"Monday",      1},
+                {"Tuesday",     2},
+                {"Wednesday",   3},
+                {"Thursday",    4},
+                {"Friday",      5},
+                {"Saturday",    6},
             };
 
             int temp = ((curDay % 7) - 7) * (-1);
