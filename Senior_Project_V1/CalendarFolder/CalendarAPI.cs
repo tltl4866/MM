@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Runtime.Serialization.Json;
 using System.Runtime.Serialization;
 
-//namespace Senior_Project_V1.Calendar
 namespace Senior_Project_V1
 {
     public class CalendarAPI

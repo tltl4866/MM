@@ -20,11 +20,28 @@
         <Grid x:Name="MonthHeader" Grid.Row="0">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <Border Height="Auto">
-                    <TextBlock Name="DisplayMonth" FontSize="80" VerticalAlignment="Center"/>
+                    <Button Name="LeftCaretButton" FontFamily="Segoe MDL2 Assets" Content="&#xEDD9;" 
+                            FontSize="80" VerticalAlignment="Center" Click="prevMonthButton_Click" Background="White"/>
                 </Border>
                 <Border Height="Auto">
-                    <TextBlock Name="DisaplyYear" FontSize="80" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                    <Button FontSize="80" VerticalAlignment="Center" Click="displayMonths_Click" Background="White">
+                        <TextBlock Name="DisplayMonthYear" FontSize="80" VerticalAlignment="Center"/>
+                    </Button>
                 </Border>
+                <Border Height="Auto">
+                    <Button Name="RightCaretButton" FontFamily="Segoe MDL2 Assets" Content="&#xEDDA;" 
+                            FontSize="80" VerticalAlignment="Center" Click="nextMonthButton_Click" Background="White"/>
+                </Border>
+                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                    <Border Height="50">
+                        <TextBlock Name="TestPrintOut" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium"/>
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                    <Border Height="Auto">
+                        <TextBlock Name="JanMonth" HorizontalAlignment="Center" FontSize="80" FontWeight="Medium" />
+                    </Border>
+                </StackPanel>
             </StackPanel>
         </Grid>
 
@@ -61,7 +78,7 @@
             </StackPanel>
             <StackPanel Grid.Column="4" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock HorizontalAlignment="Left" FontSize="30" FontWeight="Medium" Margin="28,0,0,0" VerticalAlignment="Stretch">THUR</TextBlock>
+                    <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Medium">THUR</TextBlock>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Column="5" VerticalAlignment="Center">
@@ -83,6 +100,7 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
@@ -96,177 +114,212 @@
 
             <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row0Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row0Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal" />
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row0Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row0Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row0Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row0Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="3" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row0Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row0Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="4" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row0Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row0Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="5" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row0Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row0Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="0" Grid.Column="6" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row0Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row0Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row1Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row1Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row1Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row1Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row1Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row1Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="3" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row1Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row1Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="4" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row1Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row1Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="5" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row1Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row1Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="6" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row1Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row1Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row2Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row2Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row2Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row2Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row2Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row2Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.Column="3" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row2Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row2Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.Column="4" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row2Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row2Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.Column="5" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row2Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row2Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="2" Grid.Column="6" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row2Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row2Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row3Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row3Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row3Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row3Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row3Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row3Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="3" Grid.Column="3" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row3Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row3Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="3" Grid.Column="4" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row3Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row3Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="3" Grid.Column="5" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row3Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row3Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="3" Grid.Column="6" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row3Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row3Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="4" Grid.Column="0" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row4Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row4Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row4Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row4Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="4" Grid.Column="2" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row4Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row4Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="4" Grid.Column="3" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row4Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row4Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="4" Grid.Column="4" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row4Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row4Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="4" Grid.Column="5" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row4Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row4Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
             <StackPanel Grid.Row="4" Grid.Column="6" VerticalAlignment="Center">
                 <Border Height="50">
-                    <TextBlock Name="row4Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal">1</TextBlock>
+                    <TextBlock Name="row4Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Row="5" Grid.Column="0" VerticalAlignment="Center">
+                <Border Height="50">
+                    <TextBlock Name="row5Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
+                <Border Height="50">
+                    <TextBlock Name="row5Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Row="5" Grid.Column="2" VerticalAlignment="Center">
+                <Border Height="50">
+                    <TextBlock Name="row5Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Row="5" Grid.Column="3" VerticalAlignment="Center">
+                <Border Height="50">
+                    <TextBlock Name="row5Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Row="5" Grid.Column="4" VerticalAlignment="Center">
+                <Border Height="50">
+                    <TextBlock Name="row5Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Row="5" Grid.Column="5" VerticalAlignment="Center">
+                <Border Height="50">
+                    <TextBlock Name="row5Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                </Border>
+            </StackPanel>
+            <StackPanel Grid.Row="5" Grid.Column="6" VerticalAlignment="Center">
+                <Border Height="50">
+                    <TextBlock Name="row5Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                 </Border>
             </StackPanel>
         </Grid>
