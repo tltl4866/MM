@@ -44,16 +44,16 @@
                         <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                             <Border Height="Auto">
                                 <Button Name="LeftCaretButton" FontFamily="Segoe MDL2 Assets" Content="&#xEDD9;" 
-                            FontSize="80" VerticalAlignment="Center" Click="prevMonthButton_Click" Background="White"/>
+                            FontSize="80" VerticalAlignment="Center" Click="PrevMonthButton_Click" Background="White"/>
                             </Border>
                             <Border Height="Auto">
-                                <Button FontSize="80" VerticalAlignment="Center" Click="displayMonths_Click" Background="White">
+                                <Button FontSize="80" VerticalAlignment="Center" Click="DisplayMonths_Click" Background="White">
                                     <TextBlock Name="DisplayMonthYear" FontSize="80" VerticalAlignment="Center"/>
                                 </Button>
                             </Border>
                             <Border Height="Auto">
                                 <Button Name="RightCaretButton" FontFamily="Segoe MDL2 Assets" Content="&#xEDDA;" 
-                            FontSize="80" VerticalAlignment="Center" Click="nextMonthButton_Click" Background="White"/>
+                            FontSize="80" VerticalAlignment="Center" Click="NextMonthButton_Click" Background="White"/>
                             </Border>
                             <StackPanel Grid.Column="0" VerticalAlignment="Center">
                                 <Border Height="50">

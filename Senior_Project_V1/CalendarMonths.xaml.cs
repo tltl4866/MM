@@ -25,26 +25,53 @@ namespace Senior_Project_V1
     public sealed partial class CalendarMonths : Page
     {
         //use new keywoard to hide FrameworkElement.Name
-        new public string Name { get; set; }
+        public string Month { get; set; }
+        public string Year { get; set; }
+        string monthYear = "";
 
         public CalendarMonths()
         {
             this.InitializeComponent();
         }
 
+        //function to get parameters passed to class during navigation
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            var parameters = (CalendarMonths)e.Parameter;
+
+            if (parameters == null)
+            {
+                return;
+            }
+            else
+            {
+                monthYear = parameters.Name;
+            }
+        }
+
         //private async void CalendarApp_Loaded(object sender, RoutedEventArgs e)
         private void CalendarMonths_Loaded(object sender, RoutedEventArgs e)
         {
             Calendar cal = new Calendar();
-            CalYear.Text = cal.Year.ToString();
+            if (monthYear == "")
+            {
+                CalYear.Text = cal.Year.ToString();
+            }
+            else
+            {
+                CalYear.Text = monthYear;
+            }
         }
 
         //HomeButton_Click
         private void CalendarApp_Click(object sender, RoutedEventArgs e)
         {
-            var parameters = new CalendarMonths();
-            //Button clicked = (Button)sender;
-            parameters.Name = ((Button)sender).Name.ToString();
+            var parameters = new CalendarMonths
+            {
+                Month = ((Button)sender).Name.ToString(),
+                Year = monthYear
+            };
             //string something = clicked.Name;
             //JanMonth.Text = parameters.Name;
             //JanMonth.Content = ((Button)sender).Name.ToString();

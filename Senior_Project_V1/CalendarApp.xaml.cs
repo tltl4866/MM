@@ -32,6 +32,7 @@ namespace Senior_Project_V1
         //identifies what the user can do
         string[] scopes = new string[] { "user.read", "user.readbasic.all", "user.readwrite", "calendars.read", "calendars.read.shared", "calendars.readwrite" };
         string setMonth = "";
+        string setYear = "";
 
         public CalendarApp()
         {
@@ -50,7 +51,8 @@ namespace Senior_Project_V1
             }
             else
             {
-                setMonth = parameters.Name;
+                setMonth = parameters.Month;
+                setYear = parameters.Year;
             }
         }
 
@@ -102,7 +104,7 @@ namespace Senior_Project_V1
                 //}
 
                 //create calendar display
-                createCalendar();
+                CreateCalendar();
 
                 //DisplayBasicTokenInfo(authResult);
 
@@ -129,7 +131,7 @@ namespace Senior_Project_V1
         /// </summary>
         /// <param name="dayInt">numerical equivalent of current day</param>
         /// <param name="dayStr">string day of the week</param>
-        private void createCalendar(int dayInt = -1, string dayStr = "")
+        private void CreateCalendar(int dayInt = -1, string dayStr = "")
         {
             string month = "";
             if (setMonth == "")
@@ -168,8 +170,16 @@ namespace Senior_Project_V1
             //JanMonth.Text = cal.Month.ToString();
 
             //TestPrintOut.Text = cal.DayOfWeekAsString(7).ToString();
+            string year;
+            if (setYear == "")
+            {
+                year = cal.YearAsString();
+            }
+            else
+            {
+                year = setYear;
+            }
 
-            string year = cal.YearAsString();
             DisplayMonthYear.Text = month + " " + year;
 
             int numDay = 0;
@@ -360,7 +370,7 @@ namespace Senior_Project_V1
         }
 
         //change every number color to default black color; to be used every time you're switching calendar months
-        private void defaultColor()
+        private void DefaultColor()
         {
             TextBlock[] textBlkArr = {row0Col0, row0Col1, row0Col2, row0Col3, row0Col4, row0Col5, row0Col6,
                                         row1Col0, row1Col1, row1Col2, row1Col3, row1Col4, row1Col5, row1Col6,
@@ -375,25 +385,33 @@ namespace Senior_Project_V1
             }
         }
 
-        private void nextMonthButton_Click(object sender, RoutedEventArgs e)
+        private void NextMonthButton_Click(object sender, RoutedEventArgs e)
         {
-            defaultColor();
+            DefaultColor();
             string firstDay = calClass.getFirstDayString(cal.Day, cal.DayOfWeekAsSoloString(), cal.LastDayInThisMonth);
             cal.AddMonths(1);
-            createCalendar(1, firstDay);
+            CreateCalendar(1, firstDay);
         }
 
-        private void prevMonthButton_Click(object sender, RoutedEventArgs e)
+        private void PrevMonthButton_Click(object sender, RoutedEventArgs e)
         {
-            defaultColor();
+            DefaultColor();
             string lastDay = calClass.getLastDayString(cal.Day, cal.DayOfWeekAsSoloString());
             cal.AddMonths(-1);
-            createCalendar(cal.LastDayInThisMonth, lastDay);
+            CreateCalendar(cal.LastDayInThisMonth, lastDay);
         }
 
-        private void displayMonths_Click(object sender, RoutedEventArgs e)
+        private void DisplayMonths_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(CalendarMonths));
+            var parameters = new CalendarMonths
+            {
+                Name = cal.YearAsString()
+            };
+            //string something = clicked.Name;
+            //JanMonth.Text = parameters.Name;
+            //JanMonth.Content = ((Button)sender).Name.ToString();
+
+            this.Frame.Navigate(typeof(CalendarMonths), parameters);
         }
 
         /// allows user to create event by tapping on a date
@@ -440,11 +458,6 @@ namespace Senior_Project_V1
                 }
             }
         }
-
-        //private void HomeButton_Click(object sender, RoutedEventArgs e)
-        //{
-         //   this.Frame.Navigate(typeof(WelcomePage));
-        //}
 
         // Handles the Click event on the Button inside the Popup control and 
         // closes the Popup. 

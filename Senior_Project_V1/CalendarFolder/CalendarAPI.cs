@@ -121,7 +121,7 @@ namespace Senior_Project_V1
         }
 
         //Post
-        public async Task<RootObject> createCalendar(AuthenticationResult authResult)
+        public async Task<RootObject> CreateCalendar(AuthenticationResult authResult)
         {
             string createCalendarEndPnt = "https://outlook.office.com/api/v2.0/me/calendars";
 
