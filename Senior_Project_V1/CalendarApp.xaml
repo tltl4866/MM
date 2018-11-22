@@ -12,334 +12,454 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*" />
-            <RowDefinition Height="1*" />
-            <RowDefinition Height="6*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid x:Name="MonthHeader" Grid.Row="0">
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <Border Height="Auto">
-                    <Button Name="LeftCaretButton" FontFamily="Segoe MDL2 Assets" Content="&#xEDD9;" 
+        <RelativePanel>
+            <Button Name="HomeButton" RelativePanel.AlignLeftWithPanel="True" FontFamily="Segoe MDL2 Assets"
+                    FontSize="36" Content="&#xE700;" Click="HomeButtonClick" />
+        </RelativePanel>
+
+        <SplitView Grid.Row="1" Name="MySplitView" DisplayMode="CompactOverlay" OpenPaneLength="200" CompactPaneLength="56">
+            <SplitView.Pane>
+                <ListBox SelectionMode="Single" SelectionChanged="ListBox_SelectionChanged">
+                    <ListBoxItem Name="Home">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="36" Text="&#xE80F;" />
+                            <TextBlock FontSize="24" Margin="20,0,0,0">Home</TextBlock>
+                        </StackPanel>
+                    </ListBoxItem>
+                </ListBox>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*" />
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="6*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="MonthHeader" Grid.Row="0">
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                            <Border Height="Auto">
+                                <Button Name="LeftCaretButton" FontFamily="Segoe MDL2 Assets" Content="&#xEDD9;" 
                             FontSize="80" VerticalAlignment="Center" Click="prevMonthButton_Click" Background="White"/>
-                </Border>
-                <Border Height="Auto">
-                    <Button FontSize="80" VerticalAlignment="Center" Click="displayMonths_Click" Background="White">
-                        <TextBlock Name="DisplayMonthYear" FontSize="80" VerticalAlignment="Center"/>
-                    </Button>
-                </Border>
-                <Border Height="Auto">
-                    <Button Name="RightCaretButton" FontFamily="Segoe MDL2 Assets" Content="&#xEDDA;" 
+                            </Border>
+                            <Border Height="Auto">
+                                <Button FontSize="80" VerticalAlignment="Center" Click="displayMonths_Click" Background="White">
+                                    <TextBlock Name="DisplayMonthYear" FontSize="80" VerticalAlignment="Center"/>
+                                </Button>
+                            </Border>
+                            <Border Height="Auto">
+                                <Button Name="RightCaretButton" FontFamily="Segoe MDL2 Assets" Content="&#xEDDA;" 
                             FontSize="80" VerticalAlignment="Center" Click="nextMonthButton_Click" Background="White"/>
-                </Border>
-                <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                    <Border Height="50">
-                        <TextBlock Name="TestPrintOut" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium"/>
-                    </Border>
-                </StackPanel>
-                <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                    <Border Height="Auto">
-                        <TextBlock Name="JanMonth" HorizontalAlignment="Center" FontSize="80" FontWeight="Medium" />
-                    </Border>
-                </StackPanel>
-            </StackPanel>
-        </Grid>
+                            </Border>
+                            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                <Border Height="50">
+                                    <TextBlock Name="TestPrintOut" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium"/>
+                                </Border>
+                            </StackPanel>
+                            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                <Border Height="Auto">
+                                    <TextBlock Name="JanMonth" HorizontalAlignment="Center" FontSize="80" FontWeight="Medium" />
+                                </Border>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
 
-        <Grid x:Name="DaysHeader" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
+                    <Grid x:Name="DaysHeader" Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Medium">SUN</TextBlock>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Medium">MON</TextBlock>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Column="2" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Medium">TUE</TextBlock>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Column="3" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Medium">WED</TextBlock>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Column="4" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Medium">THUR</TextBlock>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Column="5" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Medium">FRI</TextBlock>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Column="6" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Medium">SAT</TextBlock>
-                </Border>
-            </StackPanel>
-        </Grid>
+                        <UserControl >
+                            <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                                <Border Height="50">
+                                    <TextBlock Text="{Binding Path=DayOfWeek}" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium"/>
+                                </Border>
+                            </StackPanel>
+                        </UserControl>
 
-        <Grid x:Name="Days" Grid.Row="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
+                        <!--<local:Res Text="{Binding Text}"/>-->
 
-            <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row0Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal" />
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row0Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row0Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="3" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row0Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="4" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row0Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="5" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row0Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="6" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row0Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row1Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row1Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row1Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="3" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row1Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="4" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row1Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="5" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row1Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="6" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row1Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row2Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row2Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row2Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="3" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row2Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="4" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row2Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="5" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row2Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="6" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row2Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row3Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row3Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row3Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="3" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row3Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="4" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row3Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="5" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row3Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="6" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row3Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="0" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row4Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row4Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="2" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row4Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="3" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row4Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="4" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row4Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="5" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row4Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="6" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row4Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="5" Grid.Column="0" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row5Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row5Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="5" Grid.Column="2" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row5Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="5" Grid.Column="3" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row5Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="5" Grid.Column="4" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row5Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="5" Grid.Column="5" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row5Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-            <StackPanel Grid.Row="5" Grid.Column="6" VerticalAlignment="Center">
-                <Border Height="50">
-                    <TextBlock Name="row5Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
-                </Border>
-            </StackPanel>
-        </Grid>
+                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <TextBlock Text="SUN" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium"/>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Medium">MON</TextBlock>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Medium">TUE</TextBlock>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="3" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Medium">WED</TextBlock>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="4" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Medium">THUR</TextBlock>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="5" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Medium">FRI</TextBlock>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Column="6" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Medium">SAT</TextBlock>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
 
-        <Grid x:Name="Output" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1">
-            <StackPanel>
-                <Button Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked"/>
-            </StackPanel>
-            <Popup VerticalOffset="10" HorizontalOffset="200" x:Name="StandardPopup">
-                <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
+                    <Grid x:Name="Days" Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row0Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal" />
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row0Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row0Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="3" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row0Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="4" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row0Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="5" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row0Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="0" Grid.Column="6" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row0Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row1Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row1Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row1Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="3" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row1Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="4" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row1Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="5" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row1Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="6" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row1Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row2Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row2Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row2Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="3" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row2Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="4" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row2Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="5" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row2Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Grid.Column="6" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row2Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Grid.Column="0" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row3Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row3Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row3Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Grid.Column="3" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row3Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Grid.Column="4" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row3Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Grid.Column="5" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row3Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Grid.Column="6" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row3Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Grid.Column="0" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row4Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row4Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Grid.Column="2" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row4Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Grid.Column="3" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row4Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Grid.Column="4" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row4Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Grid.Column="5" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row4Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Grid.Column="6" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row4Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Grid.Column="0" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row5Col0" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Grid.Column="1" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row5Col1" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Grid.Column="2" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row5Col2" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Grid.Column="3" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row5Col3" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Grid.Column="4" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row5Col4" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Grid.Column="5" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row5Col5" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Grid.Column="6" VerticalAlignment="Center">
+                            <Border Height="50">
+                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                    <TextBlock Name="row5Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
+                                </Button>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid x:Name="Output" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1">
+                        <StackPanel>
+                            <Button Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked"/>
+                        </StackPanel>
+                        <Popup VerticalOffset="10" HorizontalOffset="200" x:Name="StandardPopup">
+                            <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
                 Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
                 BorderThickness="2" Width="200" Height="200">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Name="ResultText" FontSize="24.667" HorizontalAlignment="Center"/>
-                        <TextBlock Name="TokenInfoText" FontSize="24.667" HorizontalAlignment="Center"/>
-                        <Button Content="Close" Click="ClosePopupClicked" HorizontalAlignment="Center"/>
-                    </StackPanel>
-                </Border>
-            </Popup>
-        </Grid>
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Name="ResultText" FontSize="24.667" HorizontalAlignment="Center"/>
+                                    <TextBlock Name="TokenInfoText" FontSize="24.667" HorizontalAlignment="Center"/>
+                                    <Button Content="Close" Click="ClosePopupClicked" HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                </Grid>
+            </SplitView.Content>
+        </SplitView>
 
         <!--place this inside a splitview-->
         <!--<Button x:Name="SignOutButton" Content="Sign Out" Click="SignOutButton_Click" HorizontalAlignment="Center"/>-->

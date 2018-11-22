@@ -25,6 +25,7 @@ namespace Senior_Project_V1
     public sealed partial class CalendarApp : Page
     {
         CalendarAPI calObj = new CalendarAPI();
+        CalendarClass calClass = new CalendarClass();
         Calendar cal = new Calendar();
         //class contains results of one token acquisition operation
         AuthenticationResult authResult = null;
@@ -41,7 +42,6 @@ namespace Senior_Project_V1
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
             var parameters = (CalendarMonths)e.Parameter;
 
             if (parameters == null)
@@ -165,7 +165,7 @@ namespace Senior_Project_V1
 
             string lastDayofThisMonth = cal.LastDayInThisMonth.ToString();
 
-            JanMonth.Text = cal.Month.ToString();
+            //JanMonth.Text = cal.Month.ToString();
 
             //TestPrintOut.Text = cal.DayOfWeekAsString(7).ToString();
 
@@ -358,73 +358,8 @@ namespace Senior_Project_V1
                 textBlkArr[i].Foreground = new SolidColorBrush(Colors.Gray);
             }
         }
-        
-        /// <param name="curDay">current day integer</param>
-        /// <param name="dayStr">day of the week string</param>
-        /// <param name="numDays">total number of days in current month</param>
-        /// <returns>first day of the following month as string</returns>
-        private string getFirstDayString(int curDay, string dayStr, int numDays)
-        {
-            Dictionary<string, int> daysDict = new Dictionary<string, int>()
-            {
-                {"Sunday",      0},
-                {"Monday",      1},
-                {"Tuesday",     2},
-                {"Wednesday",   3},
-                {"Thursday",    4},
-                {"Friday",      5},
-                {"Saturday",    6},
-            };
 
-            int temp = (numDays - curDay) % 7;
-            int lastIntDay = (daysDict[dayStr] + temp + 1) % 7;
-
-            switch (lastIntDay)
-            {
-                case 0: return "Sunday";
-                case 1: return "Monday";
-                case 2: return "Tuesday";
-                case 3: return "Wednesday";
-                case 4: return "Thursday";
-                case 5: return "Friday";
-                case 6: return "Saturday";
-                default: return "";
-            }
-        }
-        
-        /// <param name="curDay">current day integer</param>
-        /// <param name="dayStr">day of the week string</param>
-        /// <param name="numDays">total number of days in current month</param>
-        /// <returns>last day of previous month as string</returns>
-        private string getLastDayString(int curDay, string dayStr)
-        {
-            Dictionary<string, int> daysDict = new Dictionary<string, int>()
-            {
-                {"Sunday",      0},
-                {"Monday",      1},
-                {"Tuesday",     2},
-                {"Wednesday",   3},
-                {"Thursday",    4},
-                {"Friday",      5},
-                {"Saturday",    6},
-            };
-
-            int temp = ((curDay % 7) - 7) * (-1);
-            temp = (temp + daysDict[dayStr]) % 7;
-
-            switch (temp)
-            {
-                case 0: return "Sunday";
-                case 1: return "Monday";
-                case 2: return "Tuesday";
-                case 3: return "Wednesday";
-                case 4: return "Thursday";
-                case 5: return "Friday";
-                case 6: return "Saturday";
-                default: return "";
-            }
-        }
-
+        //change every number color to default black color; to be used every time you're switching calendar months
         private void defaultColor()
         {
             TextBlock[] textBlkArr = {row0Col0, row0Col1, row0Col2, row0Col3, row0Col4, row0Col5, row0Col6,
@@ -443,7 +378,7 @@ namespace Senior_Project_V1
         private void nextMonthButton_Click(object sender, RoutedEventArgs e)
         {
             defaultColor();
-            string firstDay = getFirstDayString(cal.Day, cal.DayOfWeekAsSoloString(), cal.LastDayInThisMonth);
+            string firstDay = calClass.getFirstDayString(cal.Day, cal.DayOfWeekAsSoloString(), cal.LastDayInThisMonth);
             cal.AddMonths(1);
             createCalendar(1, firstDay);
         }
@@ -451,7 +386,7 @@ namespace Senior_Project_V1
         private void prevMonthButton_Click(object sender, RoutedEventArgs e)
         {
             defaultColor();
-            string lastDay = getLastDayString(cal.Day, cal.DayOfWeekAsSoloString());
+            string lastDay = calClass.getLastDayString(cal.Day, cal.DayOfWeekAsSoloString());
             cal.AddMonths(-1);
             createCalendar(cal.LastDayInThisMonth, lastDay);
         }
@@ -506,10 +441,10 @@ namespace Senior_Project_V1
             }
         }
 
-        private void HomeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(WelcomePage));
-        }
+        //private void HomeButton_Click(object sender, RoutedEventArgs e)
+        //{
+         //   this.Frame.Navigate(typeof(WelcomePage));
+        //}
 
         // Handles the Click event on the Button inside the Popup control and 
         // closes the Popup. 
@@ -524,6 +459,19 @@ namespace Senior_Project_V1
         {
             // open the Popup if it isn't open already 
             if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
+        }
+
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        {
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Home.IsSelected)
+            {
+                this.Frame.Navigate(typeof(WelcomePage));
+            }
         }
     }
 }
