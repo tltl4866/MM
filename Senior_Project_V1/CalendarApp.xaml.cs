@@ -178,6 +178,7 @@ namespace Senior_Project_V1
             else
             {
                 year = setYear;
+                cal.Year = Int32.Parse(setYear);
             }
 
             DisplayMonthYear.Text = month + " " + year;
