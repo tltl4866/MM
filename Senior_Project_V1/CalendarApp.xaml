@@ -79,15 +79,13 @@
                             <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
 
-                        <UserControl >
+                        <UserControl>
                             <StackPanel Grid.Column="0" VerticalAlignment="Center">
                                 <Border Height="50">
                                     <TextBlock Text="{Binding Path=DayOfWeek}" HorizontalAlignment="Center" FontSize="30" FontWeight="Medium"/>
                                 </Border>
                             </StackPanel>
                         </UserControl>
-
-                        <!--<local:Res Text="{Binding Text}"/>-->
 
                         <StackPanel Grid.Column="0" VerticalAlignment="Center">
                             <Border Height="50">
@@ -434,7 +432,7 @@
                         </StackPanel>
                         <StackPanel Grid.Row="5" Grid.Column="6" VerticalAlignment="Center">
                             <Border Height="50">
-                                <Button HorizontalAlignment="Center" Background="White"  Click="CreateEventButton_Click">
+                                <Button FontSize="25" FontWeight="Normal" VerticalAlignment="Center" HorizontalAlignment="Center" Background="White" Click="ShowPopupOffsetClicked">
                                     <TextBlock Name="row5Col6" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Normal"/>
                                 </Button>
                             </Border>
@@ -443,15 +441,33 @@
 
                     <Grid x:Name="Output" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1">
                         <StackPanel>
-                            <!--<Button Content="Show Popup (using Offset)" Click="ShowPopupOffsetClicked"/>-->
+                            <Button Content="Make Appointment" Click="ShowPopupOffsetClicked"/>
                         </StackPanel>
-                        <Popup VerticalOffset="10" HorizontalOffset="200" x:Name="StandardPopup">
+                        <Popup HorizontalOffset="450" x:Name="StandardPopup" >
                             <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
                                     Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
-                                    BorderThickness="2" Width="200" Height="200">
+                                    BorderThickness="2" Width="400" Height="500">
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock Name="ResultText" FontSize="24.667" HorizontalAlignment="Center"/>
-                                    <TextBlock Name="TokenInfoText" FontSize="24.667" HorizontalAlignment="Center"/>
+                                    <VariableSizedWrapGrid Orientation="Horizontal">
+                                        <StackPanel Margin="0,0,10,0">
+                                            <TextBlock FontWeight="SemiBold" Margin="0,10,0,10">Start Time:</TextBlock>
+                                            <TimePicker x:Name="StartTimeTimePicker" Margin="0,10,0,10"/>
+                                            <TextBlock FontWeight="SemiBold" Margin="0,10,0,10">Subject:</TextBlock>
+                                            <TextBox x:Name="SubjectTextBox" Width="320" HorizontalAlignment="Left"/>
+                                            <TextBlock FontWeight="SemiBold" Margin="0,10,0,10">Location:</TextBlock>
+                                            <TextBox x:Name="LocationTextBox" Width="320" HorizontalAlignment="Left"/>
+                                            <TextBlock FontWeight="SemiBold" Margin="0,10,0,10">Details:</TextBlock>
+                                            <TextBox x:Name="DetailsTextBox" Width="320" HorizontalAlignment="Left"/>
+                                            <TextBlock FontWeight="SemiBold" Margin="0,10,0,10">Duration:</TextBlock>
+                                            <ComboBox x:Name="DurationComboBox" SelectedIndex="0">
+                                                <ComboBoxItem x:Name="duration30">30 Minutes</ComboBoxItem>
+                                                <ComboBoxItem x:Name="duration60">1 Hour</ComboBoxItem>
+                                                <ComboBoxItem x:Name="duration90">1.5 Hours</ComboBoxItem>
+                                                <ComboBoxItem x:Name="duration120">2 Hours</ComboBoxItem>
+                                            </ComboBox>
+                                        </StackPanel>
+                                    </VariableSizedWrapGrid>
+                                    <Button Name="CreateAppointmentButton" Content="Create Event" Click="Create_Click" Margin="0, 10, 0, 10"  HorizontalAlignment="Center"/>
                                     <Button Content="Close" Click="ClosePopupClicked" HorizontalAlignment="Center"/>
                                 </StackPanel>
                             </Border>
@@ -461,6 +477,8 @@
             </SplitView.Content>
         </SplitView>
 
+        <TextBlock Name="ResultText" FontSize="24.667" HorizontalAlignment="Center"/>
+        <TextBlock Name="TokenInfoText" FontSize="24.667" HorizontalAlignment="Center"/>
         <!--place this inside a splitview-->
         <!--<Button x:Name="SignOutButton" Content="Sign Out" Click="SignOutButton_Click" HorizontalAlignment="Center"/>-->
     </Grid>

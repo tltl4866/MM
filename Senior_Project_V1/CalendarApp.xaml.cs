@@ -203,6 +203,9 @@ namespace Senior_Project_V1
                 strDay = dayStr;
             }
 
+            //ResultText.Text = year;
+            //TokenInfoText.Text = month;
+
             //get index for first of the month
             int tmp = 0;
             bool greaterThan = false;
@@ -418,7 +421,7 @@ namespace Senior_Project_V1
         /// allows user to create event by tapping on a date
         private async void CreateEventButton_Click(object sender, RoutedEventArgs e)
         {
-            RootObject myEvent = await calObj.createEvent(authResult);
+            RootObject myEvent = await calObj.CreateEvent(authResult);
             //EventSubject.Text = myEvent.Subject;
             //EventContent.Text = myEvent.Body.Content;
             //EventStartTime.Text = myEvent.Start.DateTime;
@@ -435,7 +438,7 @@ namespace Senior_Project_V1
         /// allow user to update an event
         private async void UpdateEventButton_Click(object sender, RoutedEventArgs e)
         {
-            RootObject myEvent = await calObj.updateEvent(authResult);
+            RootObject myEvent = await calObj.UpdateEvent(authResult);
         }
 
         /// Sign out the current user
@@ -485,6 +488,69 @@ namespace Senior_Project_V1
             if (Home.IsSelected)
             {
                 this.Frame.Navigate(typeof(WelcomePage));
+            }
+        }
+
+        /// <summary>
+        /// Creates an Appointment based on the input fields and validates it.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Create_Click(object sender, RoutedEventArgs e)
+        {
+            string errorMessage = null;
+            var appointment = new Windows.ApplicationModel.Appointments.Appointment();
+
+            // StartTime
+            //var date = StartTimeDatePicker.Date;
+            var time = StartTimeTimePicker.Time;
+            var timeZoneOffset = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now);
+            //var startTime = new DateTimeOffset(date.Year, date.Month, date.Day, time.Hours, time.Minutes, 0, timeZoneOffset);
+            // appointment.StartTime = startTime;
+
+            // Subject
+            appointment.Subject = SubjectTextBox.Text;
+
+            if (appointment.Subject.Length > 255)
+            {
+                errorMessage = "The subject cannot be greater than 255 characters.";
+            }
+
+            // Location
+            appointment.Location = LocationTextBox.Text;
+
+            if (appointment.Location.Length > 32768)
+            {
+                errorMessage = "The location cannot be greater than 32,768 characters.";
+            }
+
+            // Details
+            appointment.Details = DetailsTextBox.Text;
+
+            if (appointment.Details.Length > 1073741823)
+            {
+                errorMessage = "The details cannot be greater than 1,073,741,823 characters.";
+            }
+
+            // Duration
+            if (DurationComboBox.SelectedIndex == 0)
+            {
+                // 30 minute duration is selected
+                appointment.Duration = TimeSpan.FromMinutes(30);
+            }
+            else
+            {
+                // 1 hour duration is selected
+                appointment.Duration = TimeSpan.FromHours(1);
+            }
+
+            if (errorMessage == null)
+            {
+                // rootPage.NotifyUser("The appointment was created successfully and is valid.", NotifyType.StatusMessage);
+            }
+            else
+            {
+                // rootPage.NotifyUser(errorMessage, NotifyType.ErrorMessage);
             }
         }
     }

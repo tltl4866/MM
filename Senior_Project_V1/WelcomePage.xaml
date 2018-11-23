@@ -92,10 +92,10 @@
                         </Button>
                     </StackPanel>
                 </Viewbox>
-                <!--<Viewbox Grid.Row="2">
+                <!--<Viewbox Grid.Row="2" Margin="0, 10">
                     <StackPanel>
                         <Button>
-                            App
+                            Appt
                         </Button>
                     </StackPanel>
                 </Viewbox>
