@@ -25,7 +25,7 @@ namespace Senior_Project_V1.Music
         }
 
         //Add songs to the list to the list
-        private static List<Sound> GetSounds()
+        public static List<Sound> GetSounds()
         {
             var sounds = new List<Sound>();
 

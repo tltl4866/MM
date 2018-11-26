@@ -13,11 +13,10 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.Media.Playback;
 using Windows.UI.Xaml.Navigation;
 using Senior_Project_V1.Music;
 using System.Collections.ObjectModel;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace Senior_Project_V1
 {
@@ -29,12 +28,11 @@ namespace Senior_Project_V1
         private ObservableCollection<Sound> sounds;
         private List<MenuItem> MenuItems;
         private List<String> Suggestions;
-
         public MusicApp()
         {
-            this.InitializeComponent(); sounds = new ObservableCollection<Sound>();
+            this.InitializeComponent();
+            sounds = new ObservableCollection<Sound>();
             SoundManager.GetAllSounds(sounds);
-
             MenuItems = new List<MenuItem>();
             MenuItems.Add(new MenuItem { IconFile = "Assets/Icon/note.png", Category = SoundCategory.Avicii });
             MenuItems.Add(new MenuItem { IconFile = "Assets/Icon/note2.png", Category = SoundCategory.Others });
@@ -42,7 +40,6 @@ namespace Senior_Project_V1
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
         {
             MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
-
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -60,7 +57,6 @@ namespace Senior_Project_V1
                 .Select(p => p.Name)
                 .ToList();
             SearchAutoSuggestBox.ItemsSource = Suggestions;
-
         }
         private void goBack()
         {
@@ -96,12 +92,23 @@ namespace Senior_Project_V1
             MyMediaElement.Source = new Uri(this.BaseUri, sound.AudioFile);
         }
 
+        private void Rewind(object sender, RoutedEventArgs e)
+        {
+            DateTime date1 = new DateTime(2010, 8, 18, 13, 0, 0);
+            DateTime date2 = new DateTime(2010, 8, 18, 13, 0, 10);
+            TimeSpan interval = date2 - date1;
+            MyMediaElement.Position = MyMediaElement.Position - interval;
+        }
+
+        private void Forward(object sender, RoutedEventArgs e)
+        {
+            MyMediaElement.PlaybackRate = 2.0;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            MyMediaElement.DefaultPlaybackRate = 1.0;
             MyMediaElement.Play();
-
-
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -114,12 +121,46 @@ namespace Senior_Project_V1
             MyMediaElement.Stop();
         }
 
+        private void Repeat1(object sender, RoutedEventArgs e)
+        {
+            if (MyMediaElement.IsLooping == true)
+                MyMediaElement.IsLooping = false;
+            else
+                MyMediaElement.IsLooping = true;
+        }
 
+        private void Mute(object sender, RoutedEventArgs e)
+        {
+            MyMediaElement.IsMuted = !MyMediaElement.IsMuted;
+        }
+
+        private void VolumeDown(object sender, RoutedEventArgs e)
+        {
+            if (MyMediaElement.IsMuted)
+                MyMediaElement.IsMuted = false;
+            if (MyMediaElement.Volume <= 1)
+                MyMediaElement.Volume -= 0.1;
+        }
+
+        private void VolumeUp(object sender, RoutedEventArgs e)
+        {
+            if (MyMediaElement.IsMuted)
+                MyMediaElement.IsMuted = false;
+            if (MyMediaElement.Volume >= 0)
+                MyMediaElement.Volume += 0.1;
+        }
+
+        private void Next(object sender, RoutedEventArgs e)
+        {
+            DateTime date1 = new DateTime(2010, 1, 1, 8, 0, 15);
+            DateTime date2 = new DateTime(2010, 8, 18, 13, 10, 30);
+            TimeSpan interval = date2 - date1;
+            MyMediaElement.Position = interval;
+        }
 
         private void SoundGridView_DragOver(object sender, DragEventArgs e)
         {
             e.AcceptedOperation = DataPackageOperation.Copy;
-
             e.DragUIOverride.Caption = "drop to create a custom sound and title";
             e.DragUIOverride.IsCaptionVisible = true;
             e.DragUIOverride.IsContentVisible = true;
@@ -148,7 +189,6 @@ namespace Senior_Project_V1
                     }
                 }
             }
-
         }
 
         private void HomeButtom_Click(object sender, RoutedEventArgs e)
