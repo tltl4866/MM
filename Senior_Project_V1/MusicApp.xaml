@@ -117,25 +117,67 @@
 
         </SplitView>
 
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="658,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="762.5">
-            <Button Click="Button_Click"
-                    FontFamily="Segoe MDL2 Assets" 
-                    FontSize="20"
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="650,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="762.5">
+            <Button Content="&#xED3C;"
+                    FontFamily="Segoe MDL2 Assets"
+                    VerticalAlignment="Bottom"
                     Height="45"
                     Width="45"
-                    Content="&#xF5B0;"/>
+                    Click="Rewind" />
             <Button Content="&#xE769;" 
                     FontFamily="Segoe MDL2 Assets" 
                     VerticalAlignment="Bottom" 
                     Height="45"
                     Width="45"
                     Click="Button_Click_1"/>
+            <Button Click="Button_Click"
+                    FontFamily="Segoe MDL2 Assets" 
+                    FontSize="20"
+                    Height="45"
+                    Width="45"
+                    Content="&#xF5B0;"/>
             <Button Content="&#x71A;" 
                     FontFamily="Segoe MDL2 Assets" 
                     VerticalAlignment="Bottom"
                     Height="45"
                     Width="45"
                     Click="Button_Click_2" />
+            <Button Content="&#xEB9D;"
+                    FontFamily="Segoe MDL2 Assets"
+                    VerticalAlignment="Bottom"
+                    Height="45"
+                    Width="45"
+                    Click="Forward" />
+            <Button Content="&#xE8ED;"
+                    FontFamily="Segoe MDL2 Assets"
+                    VerticalAlignment="Bottom"
+                    Height="45"
+                    Width="45"
+                    Click="Repeat1" />
+            <Button Content="&#xE893;"
+                    FontFamily="Segoe MDL2 Assets"
+                    VerticalAlignment="Bottom"
+                    Height="45"
+                    Width="45"
+                    Click="Next" />
+            <Button Content="&#xE74F;"
+                    FontFamily="Segoe MDL2 Assets"
+                    VerticalAlignment="Bottom"
+                    Height="45"
+                    Width="45"
+                    Click="Mute" />
+            <Button Content="&#xE993;"
+                    FontFamily="Segoe MDL2 Assets"
+                    VerticalAlignment="Bottom"
+                    Height="45"
+                    Width="45"
+                    Click="VolumeDown" />
+            <Button Content="&#xE995;"
+                    FontFamily="Segoe MDL2 Assets"
+                    VerticalAlignment="Bottom"
+                    Height="45"
+                    Width="45"
+                    Click="VolumeUp" />
         </StackPanel>
 
 
