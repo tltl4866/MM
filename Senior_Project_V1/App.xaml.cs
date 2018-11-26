@@ -110,7 +110,7 @@ namespace Senior_Project_V1
             deferral.Complete();
         }
 
-        bool _isInBackgroundMode = false;
+        bool _isInBackgroundMode;
 
 
         private void App_EnteredBackground(object sender, EnteredBackgroundEventArgs e)

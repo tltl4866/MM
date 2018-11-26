@@ -118,6 +118,12 @@
         </SplitView>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="650,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="762.5">
+            <Button Content="&#xE892;"
+                    FontFamily="Segoe MDL2 Assets"
+                    VerticalAlignment="Bottom"
+                    Height="45"
+                    Width="45"
+                    Click="Previous" />
             <Button Content="&#xED3C;"
                     FontFamily="Segoe MDL2 Assets"
                     VerticalAlignment="Bottom"
