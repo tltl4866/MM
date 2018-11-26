@@ -32,7 +32,6 @@
             <Image x:Name="image" HorizontalAlignment="Center" 
                    VerticalAlignment="Center" Source="Assets/CameraIcon.png" Margin="50"/>
             <TextBlock x:Name="DisabledText" TextWrapping="Wrap" 
-                       Text="The live camera feed has been disabled because of hardware constraints." 
                        HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" FontSize="33.333" 
                        TextAlignment="Center" Margin="10,0"/>
         </Grid>

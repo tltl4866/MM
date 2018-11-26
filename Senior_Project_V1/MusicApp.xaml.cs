@@ -28,6 +28,7 @@ namespace Senior_Project_V1
         private ObservableCollection<Sound> sounds;
         private List<MenuItem> MenuItems;
         private List<String> Suggestions;
+        private Sound publicSound;
         public MusicApp()
         {
             this.InitializeComponent();
@@ -86,10 +87,10 @@ namespace Senior_Project_V1
         }
 
 
-        private void SoundGridView_ItemClick(object sender, ItemClickEventArgs e)
+        public void SoundGridView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var sound = (Sound)e.ClickedItem;
-            MyMediaElement.Source = new Uri(this.BaseUri, sound.AudioFile);
+            publicSound = (Sound)e.ClickedItem;
+            MyMediaElement.Source = new Uri(this.BaseUri, publicSound.AudioFile);
         }
 
         private void Rewind(object sender, RoutedEventArgs e)
@@ -109,6 +110,34 @@ namespace Senior_Project_V1
         {
             MyMediaElement.DefaultPlaybackRate = 1.0;
             MyMediaElement.Play();
+            Sound playing = null;
+            var autoplay = true;
+            while(autoplay)
+            {
+                if(MyMediaElement.Position == MyMediaElement.NaturalDuration)
+                {
+                    for (int i = 0; i < sounds.Count; i++)
+                    {
+                        playing = sounds[i];
+                        if (playing == publicSound)
+                        {
+                            if (i + 1 == sounds.Count)
+                            {
+                                playing = sounds[0];
+                                publicSound = playing;
+                            }
+                            else
+                            {
+                                playing = sounds[i + 1];
+                                publicSound = playing;
+                            }
+                            break;
+                        }
+                    }
+                    MyMediaElement.Source = new Uri(this.BaseUri, playing.AudioFile);
+                    MyMediaElement.Play();
+                }
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -152,10 +181,52 @@ namespace Senior_Project_V1
 
         private void Next(object sender, RoutedEventArgs e)
         {
-            DateTime date1 = new DateTime(2010, 1, 1, 8, 0, 15);
-            DateTime date2 = new DateTime(2010, 8, 18, 13, 10, 30);
-            TimeSpan interval = date2 - date1;
-            MyMediaElement.Position = interval;
+            Sound playing = null;
+            for (int i = 0; i < sounds.Count; i++)
+            {
+                playing = sounds[i];
+                if (playing == publicSound)
+                {
+                    if (i + 1 == sounds.Count)
+                    {
+                        playing = sounds[0];
+                        publicSound = playing;
+                    }
+                    else
+                    {
+                        playing = sounds[i + 1];
+                        publicSound = playing;
+                    }
+                    break;
+                }
+            }
+            MyMediaElement.Source = new Uri(this.BaseUri, playing.AudioFile);
+            MyMediaElement.Play();
+        }
+
+        private void Previous(object sender, RoutedEventArgs e)
+        {
+            Sound playing = null;
+            for (int i = 0; i < sounds.Count; i++)
+            {
+                playing = sounds[i];
+                if (playing == publicSound)
+                {
+                    if (i - 1  < 0)
+                    {
+                        playing = sounds[sounds.Count - 1];
+                        publicSound = playing;
+                    }
+                    else
+                    {
+                        playing = sounds[i - 1];
+                        publicSound = playing;
+                    }
+                    break;
+                }
+            }
+            MyMediaElement.Source = new Uri(this.BaseUri, playing.AudioFile);
+            MyMediaElement.Play();
         }
 
         private void SoundGridView_DragOver(object sender, DragEventArgs e)
