@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using Senior_Project_V1.Helpers;
+using Senior_Project_V1.Weather;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -36,12 +38,33 @@ namespace Senior_Project_V1
         {
             visitorName = e.Parameter as string;
         }
+        
 
-        private void WelcomePage_Loaded(object sender, RoutedEventArgs e)
+        private async void WelcomePage_Loaded(object sender, RoutedEventArgs e)
         {
-            var welcometext = String.Format("Welcome, {0}!", visitorName);
+            try
+            {
+                //var welcometext = String.Format("Welcome, {0}!", visitorName);
+                string now_time = DateTime.Now.ToString("h:mm:ss tt");
+
+                time.Text = now_time + " ";
+                //Debug.Print(time);
+                string now_date = DateTime.Now.ToString("M/d/yyyy");
+                date.Text = now_date + " ";
+                var myWeather = await WeatherClass.GetWeather(37.335480, -121.893028);
+                CurrentTemp.Text = myWeather.current.temp_f.ToString() + "°F";
+
+            }
+            catch
+            {
+                var welcometext = String.Format("Welcome, {0}!", visitorName);
+                var time = DateTime.Now.ToString("h:mm:ss tt");
+                Debug.Print(time);
+                Debug.Print("WHATUP");
+            }
             //Greetings.Text = welcometext;
         }
+
 
         private void weatherapp_Click(object sender, RoutedEventArgs e)
         {
