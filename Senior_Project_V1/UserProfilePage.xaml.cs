@@ -17,7 +17,6 @@ namespace Senior_Project_V1
         private Visitor currentUser;
         private Image[] userIDImages;
         private double idImageMaxWidth = 0;
-
         private WebcamHelper webcam;
 
         public UserProfilePage()

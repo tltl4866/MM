@@ -13,7 +13,7 @@ namespace Senior_Project_V1
     public class CalendarAPI
     {
         //define what user can do with scopes
-        string[] scopes = new string[] { "calendars.read", "calendars.readwrite", "calendars.read.shared"};
+        readonly string[] scopes = new string[] { "calendars.read", "calendars.readwrite", "calendars.read.shared"};
 
         /// Perform an HTTP GET request to a URL using an HTTP Authorization header
         /// <returns>String containing the results of the GET operation</returns>
@@ -121,7 +121,7 @@ namespace Senior_Project_V1
         }
 
         //Post
-        public async Task<RootObject> createCalendar(AuthenticationResult authResult)
+        public async Task<RootObject> CreateCalendar(AuthenticationResult authResult)
         {
             string createCalendarEndPnt = "https://outlook.office.com/api/v2.0/me/calendars";
 
@@ -136,7 +136,7 @@ namespace Senior_Project_V1
         }
 
         //Get
-        public async Task<RootObject> getCalendar(AuthenticationResult authResult)
+        public async Task<RootObject> GetCalendar(AuthenticationResult authResult)
         {
             string getCalendarEndPnt = "https://outlook.office.com/api/v2.0/me/calendars";
 
@@ -153,7 +153,7 @@ namespace Senior_Project_V1
         }
 
         //Post
-        public async Task<RootObject> createEvent(AuthenticationResult authResult)
+        public async Task<RootObject> CreateEvent(AuthenticationResult authResult)
         {
             string createEventEndPnt = "https://outlook.office.com/api/v2.0/me/events";
 
@@ -168,7 +168,7 @@ namespace Senior_Project_V1
         }
 
         //Post
-        public async Task<RootObject> updateEvent(AuthenticationResult authResult)
+        public async Task<RootObject> UpdateEvent(AuthenticationResult authResult)
         {
             string updateEventEndPnt = "https://outlook.office.com/api/v2.0/me/events/{event_id}";
 
@@ -183,7 +183,7 @@ namespace Senior_Project_V1
         }
 
         //Delete
-        public async Task<bool> deleteEvent(AuthenticationResult authResult, string id)
+        public async Task<bool> DeleteEvent(AuthenticationResult authResult, string id)
         {
             string deleteEventEndPnt = "https://outlook.office.com/api/v2.0/me/events/{event_id}";
 
@@ -194,7 +194,7 @@ namespace Senior_Project_V1
         }
 
         //Get
-        public async Task<RootObject> readEvent(AuthenticationResult authResult)
+        public async Task<RootObject> ReadEvent(AuthenticationResult authResult)
         {
             string readEventEndPnt = "https://outlook.office.com/api/v2.0/me/calendarview?startDateTime={start_datetime}&endDateTime={end_datetime}";
 

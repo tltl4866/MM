@@ -42,17 +42,17 @@
 
             <Viewbox Grid.Column="1">
                 <StackPanel x:Name="SomeWidget">
-                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Possible place for widgets" />
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Magic Mirror" />
                 </StackPanel>
             </Viewbox>
 
-            <Viewbox Grid.Column="2">
+            <!--<Viewbox Grid.Column="2">
                 <StackPanel x:Name="Notifications">
                     <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="100" FontWeight="Black">
                         Notifications from Apps
                     </TextBlock>
                 </StackPanel>
-            </Viewbox>
+            </Viewbox>-->
         </Grid>
 
         <Grid Grid.Row="1">
@@ -89,10 +89,10 @@
                         </Button>
                     </StackPanel>
                 </Viewbox>
-                <Viewbox Grid.Row="2">
+                <!--<Viewbox Grid.Row="2" Margin="0, 10">
                     <StackPanel>
                         <Button>
-                            App
+                            Appt
                         </Button>
                     </StackPanel>
                 </Viewbox>
@@ -137,7 +137,7 @@
                             App
                         </Button>
                     </StackPanel>
-                </Viewbox>
+                </Viewbox>-->
             </Grid>
 
             <Grid Grid.Column="2">
@@ -153,21 +153,21 @@
                     <RowDefinition Height="2*" />
                 </Grid.RowDefinitions>
 
-                <Viewbox Grid.Row="0">
+                <Viewbox Grid.Row="0" Margin="0, 10">
                     <StackPanel>
                         <Button Name="musicApp" Click="musicapp_Click">
                             Music
                         </Button>
                     </StackPanel>
                 </Viewbox>
-                <Viewbox Grid.Row="1">
+                <Viewbox Grid.Row="1" Margin="0, 10">
                     <StackPanel>
                         <Button Name="newsApp">
                             News
                         </Button>
                     </StackPanel>
                 </Viewbox>
-                <Viewbox Grid.Row="2">
+                <!--<Viewbox Grid.Row="2">
                     <StackPanel>
                         <Button>
                             App
@@ -215,7 +215,7 @@
                             App
                         </Button>
                     </StackPanel>
-                </Viewbox>
+                </Viewbox>-->
             </Grid>
         </Grid>
     </Grid>

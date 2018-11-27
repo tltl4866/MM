@@ -7,7 +7,7 @@
     {
         //API Key here
         //eeb9f97f67dd495b833398302832ef27
-        public const string OxfordAPIKey = "<API key>";
+        public const string OxfordAPIKey = "eeb9f97f67dd495b833398302832ef27";
         //API Endpoint here
         public const string FaceAPIEndpoint = "https://westus.api.cognitive.microsoft.com/face/v1.0";
         
@@ -20,8 +20,7 @@
     /// Constant variables that hold messages to be read via the SpeechHelper class
     public static class SpeechContants
     {
-
-        public const string VisitorNotRecognizedMessage = "Sorry! I don't recognize you";
+        public const string VisitorNotRecognizedMessage = "Welcome!";
         public const string NoCameraMessage = "Sorry! It seems like your camera has not been fully initialized.";
     }
 }

@@ -25,12 +25,14 @@ namespace Senior_Project_V1
     public sealed partial class CalendarApp : Page
     {
         CalendarAPI calObj = new CalendarAPI();
+        CalendarClass calClass = new CalendarClass();
         Calendar cal = new Calendar();
         //class contains results of one token acquisition operation
         AuthenticationResult authResult = null;
         //identifies what the user can do
         string[] scopes = new string[] { "user.read", "user.readbasic.all", "user.readwrite", "calendars.read", "calendars.read.shared", "calendars.readwrite" };
         string setMonth = "";
+        string setYear = "";
 
         public CalendarApp()
         {
@@ -41,7 +43,6 @@ namespace Senior_Project_V1
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
             var parameters = (CalendarMonths)e.Parameter;
 
             if (parameters == null)
@@ -50,7 +51,8 @@ namespace Senior_Project_V1
             }
             else
             {
-                setMonth = parameters.Name;
+                setMonth = parameters.Month;
+                setYear = parameters.Year;
             }
         }
 
@@ -102,7 +104,7 @@ namespace Senior_Project_V1
                 //}
 
                 //create calendar display
-                createCalendar();
+                CreateCalendar();
 
                 //DisplayBasicTokenInfo(authResult);
 
@@ -129,15 +131,8 @@ namespace Senior_Project_V1
         /// </summary>
         /// <param name="dayInt">numerical equivalent of current day</param>
         /// <param name="dayStr">string day of the week</param>
-        private void createCalendar(int dayInt = -1, string dayStr = "")
+        private void CreateCalendar(int dayInt = -1, string dayStr = "")
         {
-            //get previous month's last day
-            cal.AddMonths(-1);
-            string lastDayofPrevMonth = cal.LastDayInThisMonth.ToString();
-            cal.AddMonths(1);
-
-            string lastDayofThisMonth = cal.LastDayInThisMonth.ToString();
-
             string month = "";
             if (setMonth == "")
             {
@@ -145,12 +140,47 @@ namespace Senior_Project_V1
             }
             else
             {
+                Dictionary<string, int> daysDict = new Dictionary<string, int>()
+                {
+                    {"January",     1},
+                    {"February",    2},
+                    {"March",       3},
+                    {"April",       4},
+                    {"May",         5},
+                    {"June",        6},
+                    {"July",        7},
+                    {"August",      8},
+                    {"September",   9},
+                    {"October",     10},
+                    {"November",    11},
+                    {"December",    12},
+                };
+                
+                cal.Month = daysDict[setMonth];
                 month = setMonth;
             }
 
-            //TestPrintOut.Text = cal.DayOfWeekAsString(7).ToString();
+            //get previous month's last day
+            cal.AddMonths(-1);
+            string lastDayofPrevMonth = cal.LastDayInThisMonth.ToString();
+            cal.AddMonths(1);
 
-            string year = cal.YearAsString();
+            string lastDayofThisMonth = cal.LastDayInThisMonth.ToString();
+
+            //JanMonth.Text = cal.Month.ToString();
+
+            //TestPrintOut.Text = cal.DayOfWeekAsString(7).ToString();
+            string year;
+            if (setYear == "")
+            {
+                year = cal.YearAsString();
+            }
+            else
+            {
+                year = setYear;
+                cal.Year = Int32.Parse(setYear);
+            }
+
             DisplayMonthYear.Text = month + " " + year;
 
             int numDay = 0;
@@ -173,7 +203,8 @@ namespace Senior_Project_V1
                 strDay = dayStr;
             }
 
-            //JanMonth.Text = cal.FirstDayInThisMonth.ToString();
+            //ResultText.Text = year;
+            //TokenInfoText.Text = month;
 
             //get index for first of the month
             int tmp = 0;
@@ -341,74 +372,9 @@ namespace Senior_Project_V1
                 textBlkArr[i].Foreground = new SolidColorBrush(Colors.Gray);
             }
         }
-        
-        /// <param name="curDay">current day integer</param>
-        /// <param name="dayStr">day of the week string</param>
-        /// <param name="numDays">total number of days in current month</param>
-        /// <returns>first day of the following month as string</returns>
-        private string getFirstDayString(int curDay, string dayStr, int numDays)
-        {
-            Dictionary<string, int> daysDict = new Dictionary<string, int>()
-            {
-                {"Sunday", 0},
-                {"Monday", 1},
-                {"Tuesday", 2},
-                {"Wednesday", 3},
-                {"Thursday", 4},
-                {"Friday", 5},
-                {"Saturday", 6},
-            };
 
-            int temp = (numDays - curDay) % 7;
-            int lastIntDay = (daysDict[dayStr] + temp + 1) % 7;
-
-            switch (lastIntDay)
-            {
-                case 0: return "Sunday";
-                case 1: return "Monday";
-                case 2: return "Tuesday";
-                case 3: return "Wednesday";
-                case 4: return "Thursday";
-                case 5: return "Friday";
-                case 6: return "Saturday";
-                default: return "";
-            }
-        }
-        
-        /// <param name="curDay">current day integer</param>
-        /// <param name="dayStr">day of the week string</param>
-        /// <param name="numDays">total number of days in current month</param>
-        /// <returns>last day of previous month as string</returns>
-        private string getLastDayString(int curDay, string dayStr)
-        {
-            Dictionary<string, int> daysDict = new Dictionary<string, int>()
-            {
-                {"Sunday", 0},
-                {"Monday", 1},
-                {"Tuesday", 2},
-                {"Wednesday", 3},
-                {"Thursday", 4},
-                {"Friday", 5},
-                {"Saturday", 6},
-            };
-
-            int temp = ((curDay % 7) - 7) * (-1);
-            temp = (temp + daysDict[dayStr]) % 7;
-
-            switch (temp)
-            {
-                case 0: return "Sunday";
-                case 1: return "Monday";
-                case 2: return "Tuesday";
-                case 3: return "Wednesday";
-                case 4: return "Thursday";
-                case 5: return "Friday";
-                case 6: return "Saturday";
-                default: return "";
-            }
-        }
-
-        private void defaultColor()
+        //change every number color to default black color; to be used every time you're switching calendar months
+        private void DefaultColor()
         {
             TextBlock[] textBlkArr = {row0Col0, row0Col1, row0Col2, row0Col3, row0Col4, row0Col5, row0Col6,
                                         row1Col0, row1Col1, row1Col2, row1Col3, row1Col4, row1Col5, row1Col6,
@@ -423,31 +389,39 @@ namespace Senior_Project_V1
             }
         }
 
-        private void nextMonthButton_Click(object sender, RoutedEventArgs e)
+        private void NextMonthButton_Click(object sender, RoutedEventArgs e)
         {
-            defaultColor();
-            string firstDay = getFirstDayString(cal.Day, cal.DayOfWeekAsSoloString(), cal.LastDayInThisMonth);
+            DefaultColor();
+            string firstDay = calClass.getFirstDayString(cal.Day, cal.DayOfWeekAsSoloString(), cal.LastDayInThisMonth);
             cal.AddMonths(1);
-            createCalendar(1, firstDay);
+            CreateCalendar(1, firstDay);
         }
 
-        private void prevMonthButton_Click(object sender, RoutedEventArgs e)
+        private void PrevMonthButton_Click(object sender, RoutedEventArgs e)
         {
-            defaultColor();
-            string lastDay = getLastDayString(cal.Day, cal.DayOfWeekAsSoloString());
+            DefaultColor();
+            string lastDay = calClass.getLastDayString(cal.Day, cal.DayOfWeekAsSoloString());
             cal.AddMonths(-1);
-            createCalendar(cal.LastDayInThisMonth, lastDay);
+            CreateCalendar(cal.LastDayInThisMonth, lastDay);
         }
 
-        private void displayMonths_Click(object sender, RoutedEventArgs e)
+        private void DisplayMonths_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(CalendarMonths));
+            var parameters = new CalendarMonths
+            {
+                Name = cal.YearAsString()
+            };
+            //string something = clicked.Name;
+            //JanMonth.Text = parameters.Name;
+            //JanMonth.Content = ((Button)sender).Name.ToString();
+
+            this.Frame.Navigate(typeof(CalendarMonths), parameters);
         }
 
         /// allows user to create event by tapping on a date
         private async void CreateEventButton_Click(object sender, RoutedEventArgs e)
         {
-            RootObject myEvent = await calObj.createEvent(authResult);
+            RootObject myEvent = await calObj.CreateEvent(authResult);
             //EventSubject.Text = myEvent.Subject;
             //EventContent.Text = myEvent.Body.Content;
             //EventStartTime.Text = myEvent.Start.DateTime;
@@ -464,7 +438,7 @@ namespace Senior_Project_V1
         /// allow user to update an event
         private async void UpdateEventButton_Click(object sender, RoutedEventArgs e)
         {
-            RootObject myEvent = await calObj.updateEvent(authResult);
+            RootObject myEvent = await calObj.UpdateEvent(authResult);
         }
 
         /// Sign out the current user
@@ -489,11 +463,6 @@ namespace Senior_Project_V1
             }
         }
 
-        private void HomeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(WelcomePage));
-        }
-
         // Handles the Click event on the Button inside the Popup control and 
         // closes the Popup. 
         private void ClosePopupClicked(object sender, RoutedEventArgs e)
@@ -507,6 +476,82 @@ namespace Senior_Project_V1
         {
             // open the Popup if it isn't open already 
             if (!StandardPopup.IsOpen) { StandardPopup.IsOpen = true; }
+        }
+
+        private void HomeButtonClick(object sender, RoutedEventArgs e)
+        {
+            MySplitView.IsPaneOpen = !MySplitView.IsPaneOpen;
+        }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Home.IsSelected)
+            {
+                this.Frame.Navigate(typeof(WelcomePage));
+            }
+        }
+
+        /// <summary>
+        /// Creates an Appointment based on the input fields and validates it.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Create_Click(object sender, RoutedEventArgs e)
+        {
+            string errorMessage = null;
+            var appointment = new Windows.ApplicationModel.Appointments.Appointment();
+
+            // StartTime
+            //var date = StartTimeDatePicker.Date;
+            var time = StartTimeTimePicker.Time;
+            var timeZoneOffset = TimeZoneInfo.Local.GetUtcOffset(DateTime.Now);
+            //var startTime = new DateTimeOffset(date.Year, date.Month, date.Day, time.Hours, time.Minutes, 0, timeZoneOffset);
+            // appointment.StartTime = startTime;
+
+            // Subject
+            appointment.Subject = SubjectTextBox.Text;
+
+            if (appointment.Subject.Length > 255)
+            {
+                errorMessage = "The subject cannot be greater than 255 characters.";
+            }
+
+            // Location
+            appointment.Location = LocationTextBox.Text;
+
+            if (appointment.Location.Length > 32768)
+            {
+                errorMessage = "The location cannot be greater than 32,768 characters.";
+            }
+
+            // Details
+            appointment.Details = DetailsTextBox.Text;
+
+            if (appointment.Details.Length > 1073741823)
+            {
+                errorMessage = "The details cannot be greater than 1,073,741,823 characters.";
+            }
+
+            // Duration
+            if (DurationComboBox.SelectedIndex == 0)
+            {
+                // 30 minute duration is selected
+                appointment.Duration = TimeSpan.FromMinutes(30);
+            }
+            else
+            {
+                // 1 hour duration is selected
+                appointment.Duration = TimeSpan.FromHours(1);
+            }
+
+            if (errorMessage == null)
+            {
+                // rootPage.NotifyUser("The appointment was created successfully and is valid.", NotifyType.StatusMessage);
+            }
+            else
+            {
+                // rootPage.NotifyUser(errorMessage, NotifyType.ErrorMessage);
+            }
         }
     }
 }

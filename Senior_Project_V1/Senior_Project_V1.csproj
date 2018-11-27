@@ -99,6 +99,10 @@
       <DependentUpon>CalendarApp.xaml</DependentUpon>
     </Compile>
     <Compile Include="CalendarFolder\CalendarAPI.cs" />
+    <Compile Include="CalendarFolder\CalendarClass.cs" />
+    <Compile Include="CalendarFolder\Resources.xaml.cs">
+      <DependentUpon>Resources.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CalendarMonths.xaml.cs">
       <DependentUpon>CalendarMonths.xaml</DependentUpon>
     </Compile>
@@ -180,6 +184,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="CalendarApp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CalendarFolder\Resources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
