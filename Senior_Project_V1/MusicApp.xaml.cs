@@ -79,8 +79,6 @@ namespace Senior_Project_V1
         private void MenuItemsListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             var menuItem = (MenuItem)e.ClickedItem;
-
-            // Filter on category
             CategoryTextBlock.Text = menuItem.Category.ToString();
             SoundManager.GetSoundsByCategory(sounds, menuItem.Category);
             BackButton.Visibility = Visibility.Visible;
@@ -110,34 +108,6 @@ namespace Senior_Project_V1
         {
             MyMediaElement.DefaultPlaybackRate = 1.0;
             MyMediaElement.Play();
-            Sound playing = null;
-            var autoplay = true;
-            while(autoplay)
-            {
-                if(MyMediaElement.Position == MyMediaElement.NaturalDuration)
-                {
-                    for (int i = 0; i < sounds.Count; i++)
-                    {
-                        playing = sounds[i];
-                        if (playing == publicSound)
-                        {
-                            if (i + 1 == sounds.Count)
-                            {
-                                playing = sounds[0];
-                                publicSound = playing;
-                            }
-                            else
-                            {
-                                playing = sounds[i + 1];
-                                publicSound = playing;
-                            }
-                            break;
-                        }
-                    }
-                    MyMediaElement.Source = new Uri(this.BaseUri, playing.AudioFile);
-                    MyMediaElement.Play();
-                }
-            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -277,7 +247,7 @@ namespace Senior_Project_V1
                 {
                     MyMediaElement.Play();
                 }
-                else // CurrentState is Buffering, Closed, Opening, Paused, or Stopped. 
+                else
                 {
                     MyMediaElement.Play();
                 }
