@@ -21,12 +21,14 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace Senior_Project_V1
 {
-    
-
     public sealed partial class NewUserPage : Page
     {
         private WebcamHelper webcam;
         private StorageFile currentIdPhotoFile;
+
+        public string ToWelcome { get; set; }
+        public string Dummy { get; set; }
+        public string UserName { get; set; }
 
         public NewUserPage()
         {
@@ -101,8 +103,16 @@ namespace Senior_Project_V1
 
                 // Stop live camera feed
                 await webcam.StopCameraPreview();
+
+                var parameters = new NewUserPage
+                {
+                    Dummy = ((Button)sender).Name.ToString(),
+                    ToWelcome = "true",
+                    UserName = UserNameBox.Text
+                };
+
                 // Navigate back to MainPage
-                Frame.Navigate(typeof(MainPage));
+                this.Frame.Navigate(typeof(MainPage), parameters);
             }
         }
 

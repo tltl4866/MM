@@ -48,6 +48,10 @@ namespace Senior_Project_V1
 
         private string backbutton_clicked = "false";
 
+        bool enteredFromApp = false;
+        bool loggedIn = false;
+        string name = "";
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -68,6 +72,22 @@ namespace Senior_Project_V1
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (!enteredFromApp)
+            {
+                enteredFromApp = true;
+            }
+            else
+            {
+                base.OnNavigatedTo(e);
+                var parameters = (NewUserPage)e.Parameter;
+                if (parameters.ToWelcome == "true")
+                {
+                    loggedIn = true;
+                    name = parameters.UserName;
+                }
+                enteredFromApp = false;
+            }
+            
             if (initializedOxford)
             {
                 UpdateWhitelistedVisitors();
@@ -135,6 +155,12 @@ namespace Senior_Project_V1
 
         private async void DoorbellButton_Click(object sender, RoutedEventArgs e)
         {
+            if (loggedIn)
+            {
+                this.Frame.Navigate(typeof(WelcomePage));
+                //ToWelcomePageTest.Visibility = Windows.UI.Xaml.Visibility.Visible;
+            }
+
             if (!doorbellJustPressed)
             {
                 doorbellJustPressed = true;
@@ -190,7 +216,8 @@ namespace Senior_Project_V1
                 else
                 {
                     // Otherwise, inform user that they were not recognized by the system
-                    await speech.Read(SpeechContants.VisitorNotRecognizedMessage);
+                    string tmp = "Welcome " + name + "!";
+                    await speech.Read(tmp);
                 }
             }
             else

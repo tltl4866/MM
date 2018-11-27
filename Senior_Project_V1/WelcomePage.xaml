@@ -45,17 +45,17 @@
 
             <Viewbox Grid.Column="1">
                 <StackPanel x:Name="SomeWidget">
-                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Possible place for widgets" />
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" Text="Magic Mirror" />
                 </StackPanel>
             </Viewbox>
 
-            <Viewbox Grid.Column="2">
+            <!--<Viewbox Grid.Column="2">
                 <StackPanel x:Name="Notifications">
                     <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="100" FontWeight="Black">
                         Notifications from Apps
                     </TextBlock>
                 </StackPanel>
-            </Viewbox>
+            </Viewbox>-->
         </Grid>
 
         <Grid Grid.Row="1">
