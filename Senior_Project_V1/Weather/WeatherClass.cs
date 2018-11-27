@@ -7,6 +7,8 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net;
+using System.Diagnostics;
 
 namespace Senior_Project_V1.Weather
 {
@@ -16,15 +18,24 @@ namespace Senior_Project_V1.Weather
         {
             var http = new HttpClient();
 
-            var apiurl = String.Format("https://api.apixu.com/v1/forecast.json?key=<API_Key>&q={0},{1}&days=7"
+            var apiurl = String.Format("https://api.apixu.com/v1/forecast.json?key=<weatherAPI>&q={0},{1}&days=7"
                 , lat.ToString(), lon.ToString());
-            var response = await http.GetAsync(apiurl);
-            var result = await response.Content.ReadAsStringAsync();
-            var serializer = new DataContractJsonSerializer(typeof(RootObject));
 
+            //var response = await http.GetAsync(apiurl);
+            //var result = await response.Content.ReadAsStringAsync();
+            var cli = new System.Net.WebClient();
+            var result = cli.DownloadString(apiurl);
+            Console.WriteLine(result);
+            Debug.Print(result);
+            //Debug.Print(result);
+            var serializer = new DataContractJsonSerializer(typeof(RootObject));
+            //Debug.Print(response);
+
+            Debug.Print("HELLO");
             var ms = new MemoryStream(Encoding.UTF8.GetBytes(result));
             var data = (RootObject)serializer.ReadObject(ms);
-
+            Debug.Print("SOMETHING WROnG");
+            //Debug.Print(data);
             return data;
 
         }
