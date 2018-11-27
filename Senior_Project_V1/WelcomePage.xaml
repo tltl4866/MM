@@ -25,14 +25,11 @@
 
             <Viewbox Grid.Column="0">
                 <StackPanel x:Name="DateWeatherLocation">
-                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" FontSize="72">
-                        10:00
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" FontSize="72" Name="time">
                     </TextBlock>
-                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" FontSize="36">
-                        Tuesday, March 6
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" FontSize="36" Name="date">
                     </TextBlock>
-                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" FontSize="72">
-                        63&#x00B0;
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" FontSize="72" Name="CurrentTemp">
                     </TextBlock>
                     <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" FontSize="36">
                         Clear Skies
